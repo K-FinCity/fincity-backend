@@ -42,7 +42,7 @@ async function getByProfesor(id) {
 //Create STUDENTS
 
 async function createStudents(id, studentsGroup) {
-  function normalize(srt) {
+  function normalize(str) {
     return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
   }
   function createUser(fn, ln) {
