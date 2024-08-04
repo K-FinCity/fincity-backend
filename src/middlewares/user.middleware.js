@@ -12,6 +12,8 @@ export default async function validUser(req, res, next) {
       })
     }
 
+    console.log(authorization)
+
     const token = authorization.split(' ')[1]
     jwt.verify(token, process.env.JWT_SIGN, (err, payload) => {
       if (err) {

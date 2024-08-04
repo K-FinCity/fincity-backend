@@ -2,9 +2,9 @@ import jwt from 'jsonwebtoken'
 
 export default async function validTokenEmail(req, res, next) {
   try {
-    const { authentication } = req.headers
+    const { authorization } = req.headers
 
-    if (!authentication) {
+    if (!authorization) {
       console.log('No header')
       return res.status(401).send({
         error: {
@@ -13,7 +13,7 @@ export default async function validTokenEmail(req, res, next) {
       })
     }
 
-    const token = authentication.split(' ')[1]
+    const token = authorization.split(' ')[1]
     jwt.verify(token, process.env.TOKEN_EMAIL_SECRET, (err, payload) => {
       if (err) {
         return res.status(403).json({

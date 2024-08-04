@@ -210,7 +210,7 @@ router.post('/validate-email', validTokenEmailMiddleware, async (req, res) => {
   try {
     const { user } = req
 
-    await users.validate(user.id)
+    await users.validate(user.idUser)
 
     res.status(200).send({
       message: 'Validate Successful',
