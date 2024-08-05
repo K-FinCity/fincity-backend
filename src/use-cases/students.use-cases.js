@@ -45,6 +45,9 @@ async function createStudents(id, studentsGroup) {
   function normalize(str) {
     return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
   }
+  function randomNumber() {
+    return Math.floor(100 + Math.random() * 900)
+  }
   function createUser(fn, ln) {
     const user = `${fn}${ln.slice(0, 3)}`.toLowerCase()
     return normalize(user)
@@ -54,9 +57,7 @@ async function createStudents(id, studentsGroup) {
     const firstPart = firstName.slice(0, 3)
     const lastPart = lastName.slice(0, randomChar)
 
-    const randomNumber = Math.floor(100 + Math.random() * 900)
-
-    const password = `${randomNumber}${firstPart}${randomNumber}${lastPart}${randomNumber}`
+    const password = `${randomNumber()}${firstPart}${randomNumber()}${lastPart}${randomNumber()}`
 
     return normalize(password)
   }
